@@ -18,12 +18,9 @@ module.exports = {
       'error',
       'unix'
     ],
-    'quotes': [
-      'error',
-      'single'
-    ],
     'semi': ['error', 'always'],
     'no-multiple-empty-lines': [2, {'max': 99999, 'maxEOF': 0}],
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+    'no-explicit-any': 'off'
   }
 };
