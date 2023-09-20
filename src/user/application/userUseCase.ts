@@ -12,4 +12,9 @@ export class UserUseCase {
     
     return userCreated;
   };
+
+  public getEmailUser = async(email: string, password: string) => {
+    const userEmail = await this.userRepository.getEmailUser(email);
+    return userEmail;
+  };
 }

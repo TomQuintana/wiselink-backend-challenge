@@ -11,4 +11,15 @@ export class UserMongoRepository implements UserRepository{
     
     return user;
   }
+
+  async getEmailUser(email: string): Promise<any> {
+
+    try {
+      const emailUser = await User.findOne({email});
+      return emailUser;
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
