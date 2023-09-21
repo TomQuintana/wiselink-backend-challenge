@@ -3,16 +3,15 @@ import { UserUseCase } from "../../application/userUseCase";
 import { generarJWT } from "../services/auth.service";
 
 export class UserController {
-
+  
   constructor(private userUseCase: UserUseCase) {
     this.registerUser = this.registerUser.bind(this);
     this.authUser = this.authUser.bind(this);
   }
 
   public async registerUser(req: Request, res: Response) {
-
-    const user = await this.userUseCase.createUser(req.body);
     
+    const user = await this.userUseCase.createUser(req.body);
     res.status(200).send({user});
   }
 
@@ -33,5 +32,5 @@ export class UserController {
 
     res.send({token});
   }
-
+  
 }

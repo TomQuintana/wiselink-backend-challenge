@@ -1,15 +1,22 @@
 import { UserRepository } from "../domain/user.repository";
 import { UserValue } from "../domain/user.value";
+import { UserService } from "../infrastructure/services/user.service";
 
 export class UserUseCase {
+
+  userService = new UserService();
+
   constructor(private readonly userRepository: UserRepository){}
 
   public createUser = async({name, email, password, rol}) => {
+    // Validar los datos del usuario
+    // TODO: terminar de validar el login con el rol
+    const validateUser = this.userService.validate(email, rol);
+
     const userValue = new UserValue({name, email, password, rol});
 
     const userCreated = await this.userRepository.registerUser(userValue);
-    console.log('Desde User Case');
-    
+
     return userCreated;
   };
 

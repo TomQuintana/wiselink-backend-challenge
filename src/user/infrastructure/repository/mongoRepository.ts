@@ -13,7 +13,6 @@ export class UserMongoRepository implements UserRepository{
   }
 
   async getEmailUser(email: string): Promise<any> {
-
     try {
       const emailUser = await User.findOne({email});
       return emailUser;
@@ -22,4 +21,5 @@ export class UserMongoRepository implements UserRepository{
       console.log(error);
     }
   }
+
 }

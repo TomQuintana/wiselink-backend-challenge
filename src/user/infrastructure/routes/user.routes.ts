@@ -3,10 +3,6 @@ import { UserMongoRepository } from "../repository/mongoRepository";
 import { UserUseCase } from "../../application/userUseCase";
 import { UserController } from "../controller/user.controller";
 
-
-//import { EventController } from "../controller/event.controller";
-//import { MongoRepository } from "../repository/mongoRepository";
-
 const route = Router();
 
 const userRepo = new UserMongoRepository();
