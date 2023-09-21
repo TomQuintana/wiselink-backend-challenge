@@ -15,12 +15,12 @@ export class MongoRepository implements EventRepository {
   }
 
   async removeEvent(id: string): Promise<any> {
-    console.log(id);
-    
     const eventRemoved = await EventModel.findByIdAndDelete(id);
-    console.log(eventRemoved);
-    
     return eventRemoved;
+  }
+
+  async updateEventById(id: string, data: object): Promise<any> {
+    return await EventModel.findByIdAndUpdate(id, data);
   }
   
 }

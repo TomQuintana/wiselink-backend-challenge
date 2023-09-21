@@ -10,6 +10,7 @@ export class EventController {
     this.registerEvent = this.registerEvent.bind(this);
     this.allEvents = this.allEvents.bind(this);
     this.removeEvent = this.removeEvent.bind(this); //NOTE: analizar que hace bien este constructor
+    this.updateEvent = this.updateEvent.bind(this); //NOTE: analizar que hace bien este constructor
   }
 
 
@@ -47,6 +48,20 @@ export class EventController {
     res.send({msg: 'Event Removed'});
   }
 
-  //TODO: modify event only for admin user
-  
+  public async updateEvent(req: Request, res: Response) {
+    const {id} = req.params;
+    const {body} = req;
+
+    //NOTE: pasar esto a un middleware
+    const rol = this.validate.rolByToken(req.headers.authorization);
+
+    if(!rol) {
+      return res.status(404).json({
+        msg:'You do not have permissions to do the action'
+      });
+    }
+    const eventUpdated = await this.eventUseCase.updateEventById(id, body);
+    res.send({msg: 'Event Updated'});
+
+  }
 }

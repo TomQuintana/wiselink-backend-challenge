@@ -21,5 +21,9 @@ export class EventUseCase {
     const eventRemoved = await this.eventRepository.removeEvent(id);
     return eventRemoved;
   };
+
+  public updateEventById = async (id: string, data: object) => {
+    return await this.eventRepository.updateEventById(id, data);
+  };
   
 }
