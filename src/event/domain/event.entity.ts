@@ -2,7 +2,7 @@ export interface EventEntity {
   title: string;
   shortDescription: string;
   longDescription: string;
-  dateTime: Date;
-  organizador: string;
-  place: 'borrador' | 'publicado';
+  host: string;
+  place: string,
+  status: 'borrador' | 'publicado',
 }

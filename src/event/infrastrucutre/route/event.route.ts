@@ -11,6 +11,9 @@ const eventUseCase = new EventUseCase(eventRepo);
 
 const eventCtrl = new EventController(eventUseCase);
 
-route.post(`/`, eventCtrl.registerEvent);
+route.post(`/create`, eventCtrl.registerEvent);
+route.delete(`/remove/:id`, eventCtrl.removeEvent);
+route.get(`/`, eventCtrl.allEvents);
+
 
 export default route;
