@@ -13,7 +13,6 @@ export class EventController {
     this.updateEvent = this.updateEvent.bind(this); //NOTE: analizar que hace bien este constructor
   }
 
-
   public async registerEvent(req: Request, res: Response) {
     const rol = this.validate.rolByToken(req.headers.authorization);
 
@@ -28,6 +27,14 @@ export class EventController {
   }
 
   public async allEvents(req: Request, res: Response) {
+    
+    const rol = this.validate.rolByToken(req.headers.authorization);
+    
+    if(!rol) {
+      const publishedEvent = await this.eventUseCase.getPublicEvent();
+      return res.send({publishedEvent});
+    }
+    
     const allEvents = await this.eventUseCase.obtainAllEvents();
     res.send({allEvents});
   }
@@ -54,6 +61,8 @@ export class EventController {
 
     //NOTE: pasar esto a un middleware
     const rol = this.validate.rolByToken(req.headers.authorization);
+    console.log(rol);
+    
 
     if(!rol) {
       return res.status(404).json({

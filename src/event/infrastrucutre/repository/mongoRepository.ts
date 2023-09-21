@@ -14,6 +14,11 @@ export class MongoRepository implements EventRepository {
     return allEvents;
   }
 
+  async obtainPublishedEvent(): Promise<any> {
+    const events = await EventModel.find({ status: 'publicado'});
+    return events;
+  }
+
   async removeEvent(id: string): Promise<any> {
     const eventRemoved = await EventModel.findByIdAndDelete(id);
     return eventRemoved;

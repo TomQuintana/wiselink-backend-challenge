@@ -17,6 +17,11 @@ export class EventUseCase {
     return events;
   };
 
+  public getPublicEvent = async () => {
+    const events = await this.eventRepository.obtainPublishedEvent();
+    return events;
+  };
+
   public removeEvent = async (id: string) => {
     const eventRemoved = await this.eventRepository.removeEvent(id);
     return eventRemoved;
