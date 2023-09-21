@@ -8,6 +8,7 @@ export class EventUseCase {
     const eventValue = new EventValue({title, shortDescription, longDescription, dateTime, host, place, status});
 
     const eventCreated = await this.eventRepository.registerEvent(eventValue);
+
     return eventCreated;
   };
 
@@ -15,4 +16,10 @@ export class EventUseCase {
     const events = await this.eventRepository.allEvents();
     return events;
   };
+
+  public removeEvent = async (id: string) => {
+    const eventRemoved = await this.eventRepository.removeEvent(id);
+    return eventRemoved;
+  };
+  
 }
