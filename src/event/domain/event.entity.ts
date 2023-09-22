@@ -4,5 +4,7 @@ export interface EventEntity {
   longDescription: string;
   host: string;
   place: string,
-  status: 'borrador' | 'publicado',
+  date: string,
+  hour: string
+  status: 'borrador' | 'publicada', //TODO: change value to publicada
 }

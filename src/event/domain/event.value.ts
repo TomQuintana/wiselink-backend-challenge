@@ -6,14 +6,18 @@ export class EventValue implements EventEntity {
   longDescription: string;
   host: string;
   place: string;
-  status: 'borrador' | 'publicado';
+  date: string;
+  hour: string;
+  status: 'borrador' | 'publicada';
 
-  constructor({title, shortDescription, longDescription, host, place, status}: {title: string, shortDescription: string, longDescription: string, dateTime: Date, host: string, place:string, status:'borrador' | 'publicado'}) {
+  constructor({title, shortDescription, longDescription, host, place, date, hour, status}: {title: string, shortDescription: string, longDescription: string, date: string, hour: string, host: string, place:string, status:'borrador' | 'publicada'}) {
     this.title = title;
     this.longDescription = longDescription;
     this.shortDescription = shortDescription;
     this.host = host;
     this.place = place;
+    this.date = date;
+    this.hour = hour;
     this.status = status;
   }
 }

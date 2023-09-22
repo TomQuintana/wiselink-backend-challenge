@@ -4,8 +4,8 @@ import { EventValue } from "../domain/event.value";
 export class EventUseCase {
   constructor(private readonly eventRepository: EventRepository) {}
 
-  public registerEvent = async({title, shortDescription, longDescription, dateTime, host, place, status}) => {
-    const eventValue = new EventValue({title, shortDescription, longDescription, dateTime, host, place, status});
+  public registerEvent = async({title, shortDescription, longDescription, date, hour, host, place, status}) => {
+    const eventValue = new EventValue({title, shortDescription, longDescription, date, hour, host, place, status});
 
     const eventCreated = await this.eventRepository.registerEvent(eventValue);
 

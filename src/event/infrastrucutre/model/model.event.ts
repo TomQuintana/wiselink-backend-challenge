@@ -17,9 +17,11 @@ const UserSchema = new Schema(
     place: {
       type: String
     },
-    createdAt: {
-      type: Date,
-      default: Date.now, // This sets the default value to the current date and time
+    hour: {
+      type: String 
+    },
+    date: {
+      type: String,
     },
     status: {
       default: 'borrador',
