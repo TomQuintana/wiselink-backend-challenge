@@ -9,8 +9,6 @@ export class UserUseCase {
   constructor(private readonly userRepository: UserRepository){}
 
   public createUser = async({name, email, password, rol}) => {
-    // Validar los datos del usuario
-    // TODO: terminar de validar el login con el rol
     const validateUser = this.userService.validate(email, rol);
 
     const userValue = new UserValue({name, email, password, rol});

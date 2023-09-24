@@ -7,13 +7,18 @@ interface JwtPayload {
 export class Validate {
   constructor() {}
 
-  //TODO: cambair nombre de variable headerToken
   rolByToken(headerToken) {
     const token = this.headerToken(headerToken);
     
     try {
       if(token !== undefined) {
-        const decoded = jwt.verify(token, 'palabrasupersecreta') as JwtPayload;
+        const secretOrPrivateKey = process.env.JWT_WORLD;
+
+        if (!secretOrPrivateKey) {
+          console.error('La variable de clave secreta (SECRET_KEY) no está definida en el archivo .env');
+          process.exit(1); 
+        }
+        const decoded = jwt.verify(token, secretOrPrivateKey) as JwtPayload;
         return this.isUserRol(decoded.rol);
         
       }

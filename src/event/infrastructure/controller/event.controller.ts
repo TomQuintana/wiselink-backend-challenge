@@ -11,9 +11,9 @@ export class EventController {
   constructor(private eventUseCase: EventUseCase) {
     this.registerEvent = this.registerEvent.bind(this);
     this.allEvents = this.allEvents.bind(this);
-    this.removeEvent = this.removeEvent.bind(this); //NOTE: analizar que hace bien este constructor
-    this.updateEvent = this.updateEvent.bind(this); //NOTE: analizar que hace bien este constructor
-    this.suscribEvent = this.suscribEvent.bind(this); //NOTE: analizar que hace bien este constructor
+    this.removeEvent = this.removeEvent.bind(this); 
+    this.updateEvent = this.updateEvent.bind(this); 
+    this.suscribEvent = this.suscribEvent.bind(this); 
   }
 
   public async registerEvent(req: Request, res: Response) {
@@ -42,7 +42,6 @@ export class EventController {
     res.send({allEvents});
   }
 
-  //NOTE: manage res when id its not found
   public async removeEvent(req: Request, res: Response) {
     const rol = this.validate.rolByToken(req.headers.authorization);
 
@@ -62,7 +61,6 @@ export class EventController {
     const {id} = req.params;
     const {body} = req;
 
-    //NOTE: pasar esto a un middleware
     const rol = this.validate.rolByToken(req.headers.authorization);
     console.log(rol);
     

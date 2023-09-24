@@ -6,5 +6,5 @@ export interface EventEntity {
   place: string,
   date: string,
   hour: string
-  status: 'borrador' | 'publicada', //TODO: change value to publicada
+  status: 'borrador' | 'publicada',
 }
