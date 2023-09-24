@@ -13,5 +13,6 @@ const userCtrl = new UserController(userUseCase);
 
 route.post(`/create`, userCtrl.registerUser);
 route.post(`/auth`, userCtrl.authUser);
+route.put(`/suscribe`, userCtrl.suscribeEvent);
 
 export default route;

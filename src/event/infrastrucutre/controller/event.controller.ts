@@ -1,16 +1,19 @@
 import { Request, Response } from "express";
 import { EventUseCase } from "../../application/eventUseCase";
 import { Validate } from "../services/validate.service";
+import { Suscribe } from "../services/suscribe.service";
 
 export class EventController {
 
   validate = new Validate();
+  suscribe = new Suscribe();
 
   constructor(private eventUseCase: EventUseCase) {
     this.registerEvent = this.registerEvent.bind(this);
     this.allEvents = this.allEvents.bind(this);
     this.removeEvent = this.removeEvent.bind(this); //NOTE: analizar que hace bien este constructor
     this.updateEvent = this.updateEvent.bind(this); //NOTE: analizar que hace bien este constructor
+    this.suscribEvent = this.suscribEvent.bind(this); //NOTE: analizar que hace bien este constructor
   }
 
   public async registerEvent(req: Request, res: Response) {
@@ -69,8 +72,25 @@ export class EventController {
         msg:'You do not have permissions to do the action'
       });
     }
-    const eventUpdated = await this.eventUseCase.updateEventById(id, body);
+    await this.eventUseCase.updateEventById(id, body);
     res.send({msg: 'Event Updated'});
 
   }
+
+  public async suscribEvent(req: Request, res: Response) {
+    const {id} = req.params;
+
+    const rol = this.validate.rolByToken(req.headers.authorization);
+
+    if(!rol) {
+      const eventSelect = await this.eventUseCase.findEventById(id);
+      const eventStatus = this.suscribe.event(eventSelect, req.headers.authorization);
+
+      if(eventStatus) {
+        return res.send({eventStatus, id});
+      }
+      return res.send({msg: 'No te puedes Suscribir'});
+    }
+  }
+
 }

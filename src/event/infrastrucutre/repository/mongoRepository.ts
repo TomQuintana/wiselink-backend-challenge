@@ -27,5 +27,10 @@ export class MongoRepository implements EventRepository {
   async updateEventById(id: string, data: object): Promise<any> {
     return await EventModel.findByIdAndUpdate(id, data);
   }
+
+  async findEventById(id: string): Promise<any> {
+    const eventById = await EventModel.findById(id);
+    return eventById?.date;
+  }
   
 }

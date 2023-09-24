@@ -20,6 +20,10 @@ const UserSchema = new Schema({
     required: true,
     emun: ['ADMIN_ROL', 'USER_ROL']
   },
+  subscribedEvents: { 
+    type: Object,
+    default: '' 
+  }
 });
 
 const UserModel = model('User', UserSchema);

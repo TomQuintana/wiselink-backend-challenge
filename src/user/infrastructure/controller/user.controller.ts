@@ -7,16 +7,15 @@ export class UserController {
   constructor(private userUseCase: UserUseCase) {
     this.registerUser = this.registerUser.bind(this);
     this.authUser = this.authUser.bind(this);
+    this.suscribeEvent = this.suscribeEvent.bind(this);
   }
 
   public async registerUser(req: Request, res: Response) {
-    
     const user = await this.userUseCase.createUser(req.body);
     res.status(200).send({user});
   }
 
   public async authUser(req: Request, res: Response) {
-    
     const {email, password} = req.body;
     const userEmail = await this.userUseCase.getEmailUser(email, password);
 
@@ -33,4 +32,8 @@ export class UserController {
     res.send({token});
   }
   
+  public async suscribeEvent(req: Request, res: Response) {
+    const userEvent = await this.userUseCase.addEventForUser(req.body.eventStatus.email, req.body.id)
+    return res.send({userEvent})
+  }
 }

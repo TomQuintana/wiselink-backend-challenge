@@ -13,7 +13,7 @@ const eventCtrl = new EventController(eventUseCase);
 
 
 route.get(`/`, eventCtrl.allEvents);
-
+route.get(`/suscribe/:id`, eventCtrl.suscribEvent);
 route.post(`/create`, eventCtrl.registerEvent);
 route.delete(`/remove/:id`, eventCtrl.removeEvent);
 route.put(`/update/:id`, eventCtrl.updateEvent);

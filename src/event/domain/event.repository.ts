@@ -6,4 +6,5 @@ export interface EventRepository {
   obtainPublishedEvent(): Promise<EventEntity | null>;
   removeEvent(id: string): Promise<EventEntity | null>;
   updateEventById(id: string, data: object): Promise<EventEntity | null>;
+  findEventById(id: string): Promise<EventEntity | null>;
 }

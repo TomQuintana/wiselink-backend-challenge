@@ -30,5 +30,9 @@ export class EventUseCase {
   public updateEventById = async (id: string, data: object) => {
     return await this.eventRepository.updateEventById(id, data);
   };
+
+  public findEventById = async(id: string) => {
+    return await this.eventRepository.findEventById(id);
+  };
   
 }

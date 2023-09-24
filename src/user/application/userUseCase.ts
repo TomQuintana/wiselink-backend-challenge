@@ -24,4 +24,9 @@ export class UserUseCase {
     const userEmail = await this.userRepository.getEmailUser(email);
     return userEmail;
   };
+
+  public addEventForUser = async(email: string, id: string) => {
+    const userEvent = await this.userRepository.addEventForUser(email, id);
+    return userEvent;
+  };
 }
