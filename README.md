@@ -1,6 +1,6 @@
 <h1 align="center">Challenge realizado para Wiselink</h1>
 
-<h3 align="left">Se genero una api para gestionar la alta y baja de Eventos mediante usuarios. La misma fue realizada utilizando node, typescript y express, por el lado de la arquitectura se utilizo la arquitectura de Domain Driven Design (DDD)</h3>
+## Se desarrollo una api para gestionar la alta y baja de Eventos mediante usuarios. La misma fue realizada utilizando node, typescript y express, por el lado de la arquitectura se utilizo la arquitectura de Domain Driven Design (DDD), se utilizo swagger y mermaid para la documentacion del proyecto
 
 ## Estructura del Respositorio 
 ``` bash
@@ -36,7 +36,7 @@
 
 |-- README.md
 ```
-## Genero un apartado donde se detalla el flujo de cada endpoint
+## Se Genero un apartado donde se detalla el flujo de cada endpoint
 - El mismo fue generado utilizando mermaid --> [Carpeta de los flujos por endpoint](./src/doc/flow) 
 
 ![All Events](https://res.cloudinary.com/dmg3cl9dc/image/upload/v1695588014/Screenshot_2023-09-24_at_17.40.01_ixnzhk.png) 
